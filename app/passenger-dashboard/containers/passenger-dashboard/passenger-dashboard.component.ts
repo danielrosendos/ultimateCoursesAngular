@@ -60,11 +60,18 @@ export class PassengerDashboardComponent implements OnInit{
     }];
   }
 
-  handleEdit(event) {
-    console.log(event);
+  handleEdit(editPassenger: Passenger) {
+    this.passengers = this.passengers.map((passenger: Passenger) => {
+      if (passenger.id === editPassenger.id) {
+        passenger = Object.assign({}, passenger, editPassenger);
+      }
+      return passenger;
+    });
   }
 
-  handleRemove(event) {
-    console.log(event);
+  handleRemove(removePassenger: Passenger) {
+    this.passengers = this.passengers.filter((passenger: Passenger) => {
+      return passenger.id !== removePassenger.id;
+    });
   }
 }
