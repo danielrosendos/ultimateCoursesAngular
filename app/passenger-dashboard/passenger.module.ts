@@ -9,9 +9,12 @@ import { PassengerDetailComponent } from "./components/passenger-detail/passenge
 
 import { PassengerService } from "./passenger.service";
 
+import { PassengerViewerComponent } from "./containers/passenger-viewer/passenger-viewer.component";
+
 @NgModule({
   declarations: [
     PassengerDashboardComponent,
+    PassengerViewerComponent,
     PassengerCountComponent,
     PassengerDetailComponent
   ],
@@ -20,7 +23,8 @@ import { PassengerService } from "./passenger.service";
     CommonModule
   ],
   exports: [
-    PassengerDashboardComponent
+    PassengerDashboardComponent,
+    PassengerViewerComponent
   ],
   providers: [
     PassengerService
