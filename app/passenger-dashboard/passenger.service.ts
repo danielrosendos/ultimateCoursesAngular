@@ -2,7 +2,7 @@ import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 import { Passenger } from "./models/passenger.interface";
 
@@ -15,13 +15,14 @@ export class PassengerService {
   ) {
   }
 
-  getPassengers(): Observable<Passenger[]> {
+  getPassengers(): Promise<Passenger[]> {
     return this.http
       .get(PASSENGER_API)
-      .map((response: Response) => response.json());
+      .toPromise()
+      .then((response: Response) => response.json());
   }
 
-  updatePassengers(passenger: Passenger): Observable<Passenger> {
+  updatePassengers(passenger: Passenger): Promise<Passenger> {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -30,12 +31,14 @@ export class PassengerService {
     });
     return this.http
       .put(`${PASSENGER_API}/${passenger.id}`, passenger, options)
-      .map((response: Response) => response.json());
+      .toPromise()
+      .then((response: Response) => response.json());
   }
 
-  removePassengers(passenger: Passenger): Observable<Passenger> {
+  removePassengers(passenger: Passenger): Promise<Passenger> {
     return this.http
       .delete(`${PASSENGER_API}/${passenger.id}`)
-      .map((response: Response) => response.json());
+      .toPromise()
+      .then((response: Response) => response.json());
   }
 }
