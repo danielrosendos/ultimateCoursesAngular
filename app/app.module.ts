@@ -24,7 +24,7 @@ const routes: Routes = [
   imports: [
     FormsModule,
     CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     BrowserModule,
     PassengerDashboardModule
   ],
