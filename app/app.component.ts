@@ -1,16 +1,25 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      <a routerLink="/">
-        Home
-      </a>
-      <a routerLink="/oops">
-        404
-      </a>
+      <nav class="nav">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true}"
+        >
+          Home
+        </a>
+        <a
+          routerLink="/oops"
+          routerLinkActive="active"
+        >
+          404
+        </a>
+      </nav>
       <router-outlet></router-outlet>
     </div>
   `
