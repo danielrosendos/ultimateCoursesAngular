@@ -18,7 +18,14 @@ import { PassengerFormComponent } from "./components/passenger-form/passenger-fo
 const routes: Routes = [
   {
     path: 'passengers',
-    component: PassengerDashboardComponent
+    children: [
+      {
+        path: '', component: PassengerDashboardComponent
+      },
+      {
+        path: ':id', component: PassengerViewerComponent
+      }
+    ]
   }
 ]
 
